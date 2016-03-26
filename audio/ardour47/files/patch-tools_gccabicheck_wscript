@@ -1,0 +1,8 @@
+--- tools/gccabicheck/wscript.orig	2016-02-19 01:28:56 UTC
++++ tools/gccabicheck/wscript
+@@ -19,5 +19,4 @@ def build(bld):
+     obj.source = [ 'abicheck.c' ]
+     obj.target = 'gcc-glibmm-abi-check'
+     obj.name = 'gcc-glibmm-abi-check'
+-    obj.lib = 'dl'
+     obj.install_path = None

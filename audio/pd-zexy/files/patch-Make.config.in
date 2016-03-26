@@ -1,0 +1,13 @@
+--- Make.config.in.orig	2016-02-10 06:18:28 UTC
++++ Make.config.in
+@@ -8,8 +8,8 @@ BUILDLIBRARY =@BUILDLIBRARY@
+ 
+ PREFIX     =@prefix@@PDLIBDIR@
+ 
+-INSTALL_BIN=$(DESTDIR)$(PREFIX)/lib/pd/extra/$(LIBNAME)
+-INSTALL_DOC=$(DESTDIR)$(PREFIX)/lib/pd/@REFERENCEPATH@$(LIBNAME)
++INSTALL_BIN=$(DESTDIR)$(PREFIX)/lib/pd-externals/$(LIBNAME)
++INSTALL_DOC=$(INSTALL_BIN)
+ 
+ EXT = @EXT@ 
+ DEFS = @DEFS@

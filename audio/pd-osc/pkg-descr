@@ -1,0 +1,9 @@
+This library allows one to construct and parse OSC messages within Pd. It
+includes support for ordinary OSC-messages, typetags, timetags and bundles.
+
+These objects are transport-agnostic, so you can use them to transmit OSC over
+UDP, TCP/IP, serial port, or in fact whatever you want. However, you will have
+to install additional libraries that will handle the transport layer (like
+pd-iemnet or pd-comport).
+
+WWW: http://puredata.info/downloads/osc

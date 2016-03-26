@@ -1,0 +1,11 @@
+--- libs/ardour/wscript.orig	2016-02-19 01:28:56 UTC
++++ libs/ardour/wscript
+@@ -420,7 +420,7 @@ def build(bld):
+         if (bld.env['build_target'] == 'i386' or bld.env['build_target'] == 'i686'):
+             obj.source += [ 'sse_functions_xmm.cc', 'sse_functions.s', ]
+             avx_sources = [ 'sse_functions_avx_linux.cc' ]
+-        elif bld.env['build_target'] == 'x86_64':
++        elif bld.env['build_target'] == 'amd64':
+             obj.source += [ 'sse_functions_xmm.cc', 'sse_functions_64bit.s', ]
+             avx_sources = [ 'sse_functions_avx_linux.cc' ]
+         elif bld.env['build_target'] == 'mingw':

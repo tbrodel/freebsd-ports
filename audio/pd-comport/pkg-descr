@@ -1,0 +1,5 @@
+comport is a cross-platform object for Pure Data that allows you to read and
+write bytes and lists of data to /dev/tty* devices including serial port,
+USB-serial devices, Bluetooth-serial, etc.
+
+WWW: http://puredata.info/downloads/comport

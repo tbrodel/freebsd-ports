@@ -1,0 +1,74 @@
+--- wscript.orig	2016-02-19 01:28:56 UTC
++++ wscript
+@@ -428,13 +428,13 @@ int main() { return 0; }''',
+ 
+         compiler_flags.append ("-DARCH_X86")
+ 
+-        if platform == 'linux' :
++        if platform == 'freebsd' :
+ 
+             #
+             # determine processor flags via /proc/cpuinfo
+             #
+ 
+-            if conf.env['build_target'] != 'i386':
++            '''if conf.env['build_target'] != 'i386':
+ 
+                 flag_line = os.popen ("cat /proc/cpuinfo | grep '^flags'").read()[:-1]
+                 x86_flags = flag_line.split (": ")[1:][0].split ()
+@@ -444,12 +444,14 @@ int main() { return 0; }''',
+                 if "sse" in x86_flags:
+                     build_host_supports_sse = True
+                 if "3dnow" in x86_flags:
+-                    compiler_flags.append ("-m3dnow")
++                    compiler_flags.append ("-m3dnow")'''
+ 
+             if cpu == "i586":
+                 compiler_flags.append ("-march=i586")
+             elif cpu == "i686":
+                 compiler_flags.append ("-march=i686")
++            else:
++                compiler_flags.append("-march=native")
+ 
+         if not is_clang and ((conf.env['build_target'] == 'i686') or (conf.env['build_target'] == 'x86_64')) and build_host_supports_sse:
+             compiler_flags.extend ([ flags_dict['sse'], flags_dict['fpmath-sse'], flags_dict['xmmintrinsics'] ])
+@@ -836,6 +838,9 @@ def configure(conf):
+ 
+     conf.env['LV2DIR'] = os.path.normpath(conf.env['LV2DIR'])
+ 
++    if os.uname()[0] == 'FreeBSD':
++        conf.env.append_value('LINKFLAGS', "-lexecinfo")
++
+     if sys.platform == 'darwin':
+ 
+         # this is required, potentially, for anything we link and then relocate into a bundle
+@@ -916,7 +921,7 @@ def configure(conf):
+     # executing a test program is n/a when cross-compiling
+     if Options.options.dist_target != 'mingw':
+         if Options.options.dist_target != 'msvc':
+-            conf.check_cc(function_name='dlopen', header_name='dlfcn.h', lib='dl', uselib_store='DL')
++            conf.check_cc(function_name='dlopen', header_name='dlfcn.h', uselib_store='DL')
+         conf.check_cxx(fragment = "#include <boost/version.hpp>\nint main(void) { return (BOOST_VERSION >= 103900 ? 0 : 1); }\n",
+                   execute = "1",
+                   mandatory = True,
+@@ -924,9 +929,6 @@ def configure(conf):
+                   okmsg = 'ok',
+                   errmsg = 'too old\nPlease install boost version 1.39 or higher.')
+ 
+-    if re.search ("linux", sys.platform) != None and Options.options.dist_target != 'mingw':
+-        autowaf.check_pkg(conf, 'alsa', uselib_store='ALSA')
+-
+     autowaf.check_pkg(conf, 'glib-2.0', uselib_store='GLIB', atleast_version='2.28', mandatory=True)
+     autowaf.check_pkg(conf, 'gthread-2.0', uselib_store='GTHREAD', atleast_version='2.2', mandatory=True)
+     autowaf.check_pkg(conf, 'glibmm-2.4', uselib_store='GLIBMM', atleast_version='2.32.0', mandatory=True)
+@@ -1093,8 +1095,8 @@ int main () { return 0; }
+     conf.env['BUILD_PABACKEND'] = any('portaudio' in b for b in backends)
+     conf.env['BUILD_CORECRAPPITA'] = any('coreaudio' in b for b in backends)
+ 
+-    if re.search ("linux", sys.platform) != None and Options.options.dist_target != 'mingw' and conf.env['BUILD_PABACKEND']:
+-        print("PortAudio Backend is not for Linux")
++    if re.search ("freebsd", sys.platform) != None and Options.options.dist_target != 'mingw' and conf.env['BUILD_PABACKEND']:
++        print("PortAudio Backend is not for FreeBSD")
+         sys.exit(1)
+ 
+     if sys.platform != 'darwin' and conf.env['BUILD_CORECRAPPITA']:

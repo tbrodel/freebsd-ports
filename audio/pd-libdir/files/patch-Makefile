@@ -1,0 +1,28 @@
+--- Makefile.orig	2010-09-12 19:13:38 UTC
++++ Makefile
+@@ -46,7 +46,7 @@ LIBRARY_VERSION = $(shell sed -n 's|^\#X
+ 
+ CFLAGS += -DVERSION='"$(LIBRARY_VERSION)"'
+ 
+-PD_INCLUDE = $(PD_PATH)/include
++PD_INCLUDE = $(PD_PATH)/include/pd
+ # where to install the library, overridden below depending on platform
+ prefix = /usr/local
+ libdir = $(prefix)/lib
+@@ -108,13 +108,13 @@ ifeq ($(UNAME),Darwin)
+     pkglibdir=$(HOME)/Library/Pd
+   endif
+ endif
+-ifeq ($(UNAME),Linux)
++ifeq ($(UNAME),FreeBSD)
+   CPU := $(shell uname -m)
+   SOURCES += $(SOURCES_linux)
+   EXTENSION = pd_linux
+   OS = linux
+-  PD_PATH = /usr
+-  OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
++  PD_PATH = /usr/local
++  OPT_CFLAGS = -funroll-loops -fomit-frame-pointer
+   CFLAGS += -fPIC
+   LDFLAGS += -Wl,--export-dynamic  -shared -fPIC
+   LIBS += -lc

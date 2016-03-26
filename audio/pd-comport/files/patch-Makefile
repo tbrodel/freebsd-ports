@@ -1,0 +1,21 @@
+--- Makefile.orig	2016-02-10 06:44:01 UTC
++++ Makefile
+@@ -136,14 +136,14 @@ ifeq ($(UNAME),GNU)
+   STRIP = strip --strip-unneeded -R .note -R .comment
+   DISTBINDIR=$(DISTDIR)-$(OS)-$(shell uname -m)
+ endif
+-ifeq ($(UNAME),GNU/kFreeBSD)
+-  # Debian GNU/kFreeBSD, should work like GNU/Linux for basically all externals
++ifeq ($(UNAME),FreeBSD)
++  # FreeBSD, should work like GNU/Linux for basically all externals
+   CPU := $(shell uname -m)
+   SOURCES += $(SOURCES_linux)
+   EXTENSION = pd_linux
+   OS = linux
+-  PD_PATH = /usr
+-  OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
++  PD_PATH = /usr/local
++  OPT_CFLAGS = -funroll-loops -fomit-frame-pointer
+   CFLAGS += -fPIC
+   LDFLAGS += -Wl,--export-dynamic  -shared -fPIC
+   LIBS += -lc

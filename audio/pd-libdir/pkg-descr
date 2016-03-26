@@ -1,0 +1,9 @@
+The 'libdir' loader is a Pure Data loader which supports the libdir library
+format. The libdir library format aims to be a common library format for Pd
+which works with objects written in any language, including Pd. This library
+format was designed to be easy to create, install, and use. It should work when
+installed into the global path (i.e. pd/extra) or when copied locally into a
+project folder. It should work with objects written in any supported language
+(i.e. binaries, .pd, and the various loaders like pdlua and tclpd).
+
+WWW: http://puredata.info/downloads/libdir

@@ -1,0 +1,15 @@
+bin/gpick
+man/man1/gpick.1.gz
+share/applications/gpick.desktop
+%%PORTDOCS%%%%DOCSDIR%%/copyright
+%%DATADIR%%/colors.txt
+%%DATADIR%%/colors0.txt
+%%DATADIR%%/gpick-falloff-cubic.png
+%%DATADIR%%/gpick-falloff-exponential.png
+%%DATADIR%%/gpick-falloff-linear.png
+%%DATADIR%%/gpick-falloff-none.png
+%%DATADIR%%/gpick-falloff-quadratic.png
+%%DATADIR%%/gpick-gray-pattern.png
+%%DATADIR%%/helpers.lua
+%%DATADIR%%/init.lua
+%%DATADIR%%/layouts.lua

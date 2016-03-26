@@ -1,0 +1,10 @@
+pd-lua adds a new loader to Pure Data (Pd), that allows one to load
+objectclasses written in the popular lua programming language.
+
+Some programming problems are complicated to express in graphical dataflow
+languages like Pd, requiring the user to ressort to objectclasses written in
+more general purpose languages. For those who do not want to use compiled
+languages like C/C++, this package offers the possibility to write first-class
+objectclasses in the lightweight programming language "lua".
+
+WWW: http://puredata.info/downloads/pdlua

@@ -1,0 +1,14 @@
+lib/pd-externals/osc/LICENSE.txt
+lib/pd-externals/osc/README.txt
+lib/pd-externals/osc/osc-meta.pd
+lib/pd-externals/osc/packOSC-help.pd
+lib/pd-externals/osc/packOSC.pd_linux
+lib/pd-externals/osc/packOSCstream-help.pd
+lib/pd-externals/osc/packOSCstream.pd
+lib/pd-externals/osc/pipelist-help.pd
+lib/pd-externals/osc/pipelist.pd_linux
+lib/pd-externals/osc/routeOSC-help.pd
+lib/pd-externals/osc/routeOSC.pd_linux
+lib/pd-externals/osc/unpackOSC.pd_linux
+lib/pd-externals/osc/unpackOSCstream-help.pd
+lib/pd-externals/osc/unpackOSCstream.pd

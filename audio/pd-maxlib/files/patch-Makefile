@@ -1,0 +1,21 @@
+--- Makefile.orig	2016-02-07 07:12:43 UTC
++++ Makefile
+@@ -211,15 +211,15 @@ ifeq ($(UNAME),GNU)
+   STRIP = strip --strip-unneeded -R .note -R .comment
+   DISTBINDIR=$(DISTDIR)-$(OS)-$(shell uname -m)
+ endif
+-ifeq ($(UNAME),GNU/kFreeBSD)
++ifeq ($(UNAME),FreeBSD)
+   # Debian GNU/kFreeBSD, should work like GNU/Linux for basically all externals
+   CPU := $(shell uname -m)
+   SOURCES += $(SOURCES_linux)
+   EXTENSION = pd_linux
+   SHARED_EXTENSION = so
+   OS = linux
+-  PD_PATH = /usr
+-  OPT_CFLAGS = -O6 -funroll-loops -fomit-frame-pointer
++  PD_PATH = /usr/local
++  OPT_CFLAGS = -O3 -funroll-loops -fomit-frame-pointer
+   ALL_CFLAGS += -fPIC
+   ALL_LDFLAGS += -rdynamic -shared -fPIC -Wl,-rpath,"\$$ORIGIN",--enable-new-dtags
+   SHARED_LDFLAGS += -shared -Wl,-soname,$(SHARED_LIB)

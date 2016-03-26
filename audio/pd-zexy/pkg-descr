@@ -1,0 +1,7 @@
+zexy is "the swiss army knife for Pure Data".
+
+It provides several addon objects for the Pd computer music system, including
+(but not limited to) objects for message handling (construction, parsing,
+control flow), signal handling (synthesis, analysis, comparision) et al.
+
+WWW: http://puredata.info/downloads/zexy
