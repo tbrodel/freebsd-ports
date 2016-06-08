@@ -11,8 +11,8 @@ COMMENT=	Collection of Pd objectclasses for OSC-messages
 
 LICENSE=	GPLv2+
 
-BUILD_DEPENDS=	pd:${PORTSDIR}/audio/pd
-RUN_DEPENDS=	pd:${PORTSDIR}/audio/pd
+BUILD_DEPENDS=	pd:audio/pd
+RUN_DEPENDS=	pd:audio/pd
 
 USES=		gmake
 

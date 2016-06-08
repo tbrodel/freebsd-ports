@@ -17,8 +17,8 @@ BUILD_DEPENDS=	libXt>0:${PORTSDIR}/x11-toolkits/libXt
 
 WRKSRC=		${WRKDIR}/SuperCollider
 
-LIBDEPENDS=	libjack.so:${PORTSDIR}/audio/jack \
-		libsndfile.so:${PORTSDIR}/audio/libsndfile
+LIBDEPENDS=	libjack.so:audio/jack \
+		libsndfile.so:audio/libsndfile
 
 USES=		cmake:outsource shared-mime-info
 USE_QT5=	buildtools_build gui linguisttools qmake_build webkit sql

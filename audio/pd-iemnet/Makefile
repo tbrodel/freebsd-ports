@@ -14,8 +14,8 @@ COMMENT=	Pd library for low-level networking
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	pd:${PORTSDIR}/audio/pd
-RUN_DEPENDS=	pd:${PORTSDIR}/audio/pd
+BUILD_DEPENDS=	pd:audio/pd
+RUN_DEPENDS=	pd:audio/pd
 
 WRKSRC=	${WRKDIR}/${PKGNAME}
 

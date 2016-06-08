@@ -11,8 +11,8 @@ COMMENT=	Object for Pd enabling access to serial devices
 
 LICENSE=	LGPL21
 
-BUILD_DEPENDS=	pd:${PORTSDIR}/audio/pd
-RUN_DEPENDS=	pd:${PORTSDIR}/audio/pd
+BUILD_DEPENDS=	pd:audio/pd
+RUN_DEPENDS=	pd:audio/pd
 
 PLIST_FILES=	lib/pd-externals/comport/LICENSE.txt \
 		lib/pd-externals/comport/README.txt \

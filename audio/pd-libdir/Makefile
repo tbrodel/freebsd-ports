@@ -14,8 +14,8 @@ COMMENT=		Provides support for the libdir library format for Pd
 
 LICENSE=		BSD3CLAUSE
 
-BUILD_DEPENDS=		pd:${PORTSDIR}/audio/pd
-RUN_DEPENDS=		pd:${PORTSDIR}/audio/pd
+BUILD_DEPENDS=		pd:audio/pd
+RUN_DEPENDS=		pd:audio/pd
 
 PLIST_FILES=		lib/pd-externals/libdir/LICENSE.txt \
 			lib/pd-externals/libdir/README.txt \
