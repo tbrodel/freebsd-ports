@@ -8,6 +8,11 @@ lib/pd-externals/zexy/0x3e0x7e.pd
 lib/pd-externals/zexy/0x7c0x7c0x7e-help.pd
 lib/pd-externals/zexy/0x7c0x7c0x7e.pd
 lib/pd-externals/zexy/==~-help.pd
+lib/pd-externals/zexy/AUTHORS
+lib/pd-externals/zexy/ChangeLog
+lib/pd-externals/zexy/INSTALL
+lib/pd-externals/zexy/LICENSE.txt
+lib/pd-externals/zexy/README.txt
 lib/pd-externals/zexy/a2l-help.pd
 lib/pd-externals/zexy/a2l.pd
 lib/pd-externals/zexy/absgn~-help.pd
@@ -134,6 +139,7 @@ lib/pd-externals/zexy/unpack-help.pd
 lib/pd-externals/zexy/unpack~-help.pd
 lib/pd-externals/zexy/urn-help.pd
 lib/pd-externals/zexy/wrap-help.pd
+lib/pd-externals/zexy/zexy-meta.pd
 lib/pd-externals/zexy/zexy.pd_linux
 lib/pd-externals/zexy/zigbinops-help.pd
 lib/pd-externals/zexy/z~-help.pd

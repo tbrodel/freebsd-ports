@@ -1,0 +1,11 @@
+--- configure.ac.orig	2016-05-01 01:24:33 UTC
++++ configure.ac
+@@ -49,7 +49,7 @@ AC_MSG_RESULT([$with_build_date])
+ 
+ 
+ if test "x${libdir}" = "x\${exec_prefix}/lib"; then
+- libdir='${exec_prefix}/lib/pd/extra'
++ libdir='${exec_prefix}/lib/pd-externals'
+ fi
+ 
+ 

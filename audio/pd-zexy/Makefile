@@ -1,28 +1,30 @@
 # $FreeBSD$
 
 PORTNAME=	zexy
-PORTVERSION=	2.2.4
+PORTVERSION=	2.2.6
 CATEGORIES=	audio
-MASTER_SITES=	http://puredata.info/downloads/${PORTNAME}/releases/${PORTVERSION}/
+MASTER_SITES=	DEBIAN/pool/main/p/pd-${PORTNAME}
 PKGNAMEPREFIX=	pd-
+DISTNAME=	${PKGNAMEPREFIX}${PORTNAME}_${DISTVERSION}
+EXTRACT_SUFX=	.orig.tar.gz
 
 MAINTAINER=	brittlehaus@gmail.com
 COMMENT=	Swiss army knife for Pure Data
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	pd:${PORTSDIR}/audio/pd
-RUN_DEPENDS=	pd:${PORTSDIR}/audio/pd
+BUILD_DEPENDS=	pd:audio/pd
+RUN_DEPENDS=	pd:audio/pd
 
-WRKSRC=		${WRKDIR}/${DISTNAME}/src
+WRKSRC=		${WRKDIR}/${PORTNAME}-v${PORTVERSION}-fcb634fdede2b6c71b7c5ee2cea43f05622c126b
 
-USES=		gmake
+USES=		autoreconf gmake libtool
 USE_AUTOTOOLS=	aclocal autoconf
-CONFIGURE_ARGS=	--with-pd=${LOCALBASE}/include/pd
+CONFIGURE_ARGS=	--with-pd=${LOCALBASE}/include
 
 pre-configure:
-	${REINPLACE_CMD} -e 's|Linux|FreeBSD|' ${WRKSRC}/configure.ac
-do-configure:
-	cd ${WRKSRC}; ./bootstrap.sh && ./configure ${CONFIGURE_ARGS}
+	cd ${WRKSRC} && ./autogen.sh
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/pd-externals/${PORTNAME}/${PORTNAME}.pd_linux
 
 .include <bsd.port.mk>
