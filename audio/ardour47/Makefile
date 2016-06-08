@@ -15,8 +15,7 @@ COMMENT=	Free and open source digital audio workstation
 LICENSE=	GPLv2
 
 BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool \
-		lv2core>0:${PORTSDIR}/audio/lv2core \
-		lv2-uri>0:${PORTSDIR}/audio/lv2-uri 
+		lv2>0:${PORTSDIR}/audio/lv2
 LIB_DEPENDS=	libboost_atomic.so:${PORTSDIR}/devel/boost-libs \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile \
 		libcurl.so:${PORTSDIR}/ftp/curl \
@@ -31,6 +30,7 @@ LIB_DEPENDS=	libboost_atomic.so:${PORTSDIR}/devel/boost-libs \
 USES=		gettext pkgconfig waf
 USE_GNOME=	glib20 glibmm gtk20 gtkmm24
 USE_LDCONFIG=	yes
+INSTALLS_ICONS=	yes
 
 CONFIGURE_ARGS=	--with-backends=jack --boost-include=${LOCALBASE}/include \
 		--freebie --freedesktop --no-lv2 --no-nls
