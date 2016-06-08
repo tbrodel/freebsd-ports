@@ -1,22 +1,22 @@
 # Created by: trevor
-# $FreeBSD: head/audio/pd/Makefile 408285 2016-02-06 08:49:50Z pi $
+# $FreeBSD: head/audio/pd/Makefile 415189 2016-05-14 15:08:08Z pi $
 
 PORTNAME=	pd
-PORTREVISION=	1
-DISTVERSION=	0.46-7
+DISTVERSION=	0.47-0
 DISTVERSIONSUFFIX=	.src
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://msp.ucsd.edu/Software/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	brittlehaus@gmail.com
 COMMENT=	MIDI-capable real-time audio processor/synthesizer
 
 LICENSE=	BSD3CLAUSE LGPL21
 LICENSE_COMB=	multi
 LICENSE_FILE_BSD3CLAUSE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	xdg-open:${PORTSDIR}/devel/xdg-utils \
-		dejavu>0:${PORTSDIR}/x11-fonts/dejavu
+RUN_DEPENDS=	xdg-open:devel/xdg-utils \
+		dejavu>0:x11-fonts/dejavu
 
 WRKSRC=		${WRKDIR}/${DISTNAME:S,${DISTVERSIONSUFFIX},,}
 
@@ -24,7 +24,6 @@ USES=		autoreconf gettext gmake libtool pkgconfig shebangfix \
 		tcl:wrapper tk:wrapper
 SHEBANG_FILES=	tcl/pkg_mkIndex.tcl
 SHEBANG_LANG=	tclsh
-tclsh_OLD_CMD=	/usr/bin/tclsh
 tclsh_CMD=	${LOCALBASE}/bin/tclsh
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_lib_pthread_pthread_create=no
@@ -32,20 +31,21 @@ CONFIGURE_ENV=	ac_cv_lib_pthread_pthread_create=no
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib -pthread
 
-DESKTOP_ENTRIES="Pd" "" "${PREFIX}/lib/pd/tcl/pd.ico" "pd" "" false
+DESKTOP_ENTRIES="Pd" "" "${PREFIX}/lib/pd/tcl/pd.ico" "pd" "" ${FALSE}
 
 OPTIONS_DEFINE=		ALSA DOCS JACK
 
 ALSA_CONFIGURE_ENABLE=	alsa
-ALSA_LIB_DEPENDS=	libasound.so:${PORTSDIR}/audio/alsa-lib
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 JACK_CONFIGURE_ENABLE=	jack
-JACK_LIB_DEPENDS=	libjack.so:${PORTSDIR}/audio/jack
+JACK_LIB_DEPENDS=	libjack.so:audio/jack
 
 post-patch:
 	${FIND} ${PATCH_WRKSRC} -name "*.[ch]" | ${XARGS} ${REINPLACE_CMD} -e \
 		's|__FreeBSD_kernel__|__FreeBSD__|g ; \
-		 s|__x86_64__|__amd64__|g ; \
-		 s|<alloca\.h>|<stdlib.h>|g'
+		 s|__x86_64__|__amd64__|g'
+	${FIND} ${WRKSRC}/extra -name "*.c" | ${XARGS} ${REINPLACE_CMD} -e \
+		 's|<alloca\.h>|<stdlib.h>|g'
 	${REINPLACE_CMD} -e \
 		's|\*kfreebsd\*gnu\*)|*freebsd*)| ; \
 		 s|portaudio=yes|portaudio=no| ; \
@@ -63,10 +63,6 @@ post-patch:
 	${REINPLACE_CMD} -e \
 		's|-O2 | | ; \
 		 s|-lc ||g' ${WRKSRC}/extra/makefile.subdir
-	${REINPLACE_CMD} -e \
-		's|-O2 |$$(CFLAGS) | ; \
-		 s|-g ||g ; \
-		 s|-lc ||g' ${WRKSRC}/extra/expr~/makefile
 	${REINPLACE_CMD} -e \
 		'/libpthread/s|_ERROR|_WARN|' ${WRKSRC}/portaudio/configure.in
 
